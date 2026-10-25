@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="SmartTaskPlatform.Api.Tests/SmartTaskPlatform.Api.Tests.csproj" Id="8d6a868f-5567-40a5-bc8e-41bcd4bdabb0" />
+  <Project Path="SmartTaskPlatform.Api/SmartTaskPlatform.Api.csproj" Id="6414169b-7969-4322-968a-a9b415a7d7bd" />
+  <Project Path="SmartTaskPlatform/SmartTaskPlatform.csproj" />
+</Solution>

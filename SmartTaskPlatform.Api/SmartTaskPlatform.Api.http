@@ -1,0 +1,40 @@
+
+@baseUrl = https://localhost:7192
+
+### Get all tasks
+GET {{baseUrl}}/api/tasks
+Accept: application/json
+
+###
+
+### Create a task
+POST {{baseUrl}}/api/tasks
+Content-Type: application/json
+
+{
+  "title": "Learn ASP.NET Core",
+  "priority": "High"
+}
+
+###
+
+### Get task by ID
+GET {{baseUrl}}/api/tasks/1
+Accept: application/json
+
+###
+
+### Update task
+PUT {{baseUrl}}/api/tasks/2
+Content-Type: application/json
+
+{
+  "title": "Master ASP.NET Core",
+  "priority": "Medium",
+  "isCompleted": true
+}
+
+###
+
+### Delete task
+DELETE {{baseUrl}}/api/tasks/2
