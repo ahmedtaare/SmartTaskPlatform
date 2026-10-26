@@ -11,7 +11,7 @@ permissions:
   contents: read
 
 jobs:
-  build-and-test:
+  build-test-publish:
     runs-on: ubuntu-latest
 
     steps:
@@ -33,3 +33,21 @@ jobs:
 
       - name: Run tests
         run: dotnet test SmartTaskPlatform.slnx --configuration Release --no-build
+
+      - name: Publish API
+        run: dotnet publish SmartTaskPlatform.Api/SmartTaskPlatform.Api.csproj --configuration Release --no-build --output ./publish/api
+
+      - name: Publish Blazor
+        run: dotnet publish SmartTaskPlatform/SmartTaskPlatform.csproj --configuration Release --no-build --output ./publish/web
+
+      - name: Upload API artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: smarttask-api
+          path: publish/api/
+
+      - name: Upload Blazor artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: smarttask-web
+          path: publish/web/
