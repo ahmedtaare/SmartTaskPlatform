@@ -8,9 +8,12 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 builder.Services.AddScoped<TaskService>();
 builder.Services.AddScoped<TaskApiService>();
+var apiBaseUrl = builder.Configuration["ApiSettings:BaseUrl"]
+    ?? "https://localhost:7192/";
+
 builder.Services.AddHttpClient("SmartTaskApi", client =>
 {
-    client.BaseAddress = new Uri("https://localhost:7192/");
+    client.BaseAddress = new Uri(apiBaseUrl);
 });
 
 var app = builder.Build();

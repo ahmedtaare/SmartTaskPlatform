@@ -11,8 +11,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddOpenApi();
 
 // 2. Register SQLite database
+var connectionString =
+    builder.Configuration.GetConnectionString("DefaultConnection")
+    ?? throw new InvalidOperationException(
+        "Database connection string is not configured.");
+
 builder.Services.AddDbContext<TaskDbContext>(options =>
-    options.UseSqlite("Data Source=smarttask.db"));
+    options.UseSqlite(connectionString));
 
 // 3. Register Task Service
 builder.Services.AddScoped<ITaskService, TaskService>();
