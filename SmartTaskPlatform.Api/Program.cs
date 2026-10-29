@@ -31,7 +31,7 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 // 5. GET: Get all tasks
 app.MapGet("/api/tasks", async (ITaskService service) =>
